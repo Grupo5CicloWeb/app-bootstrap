@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+      CALCULADORA IMC
+    </div>
+    <div class="card-body">
+        <img [src]="urlImage" class="img-fluid rounded mx-auto d-block" 
+            width="450px" height="250px"
+         alt="...">
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control"
+             id="txttalla" [(ngModel)]="formImc.talla"
+             placeholder="name@example.com">
+            <label for="txttalla">Ingrese su talla</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control"
+             id="txtpeso" [(ngModel)]="formImc.peso"
+             placeholder="name@example.com">
+            <label for="txtpeso">Ingrese su peso</label>
+        </div>
+        <button type="button" (click)="calcularImc()" class="btn btn-secondary">CALCULAR</button>
+        @if(mostrarMensaje){
+            <div class="alert alert-primary" role="alert">
+                {{resultado}}
+            </div>
+        }
+        <hr />
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Valor IMC</th>
+                <th scope="col">Diagnóstico</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (itemPaciente of pacientesList; track $index) {
+                    <tr >
+                        <th scope="row">{{itemPaciente.id}}</th>
+                        <td>{{itemPaciente.valor}}</td>
+                        <td>{{itemPaciente.diagnostico}}</td>
+                      </tr>  
+                }
+                          
+            </tbody>
+          </table>
+    </div>
+</div>
